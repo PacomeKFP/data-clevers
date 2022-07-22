@@ -101,7 +101,7 @@ Widget boxSection({title, description, teacher, domain, imagePath}) => Container
   margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
   decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(10),
-    gradient: const LinearGradient(
+    gradient:  LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [

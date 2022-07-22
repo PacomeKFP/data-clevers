@@ -40,7 +40,7 @@ class UserHome extends StatelessWidget {
                               'Python est le langage de programmation de prédilection de référence,' 
                               'je dirais même préféré des Data Scientists',
                           teacher: 'PERIVOU Agoula',
-                          domain: 'Data Scientist', imagePath: '../../../assets/images/avatar.jpeg')
+                          domain: 'Data Scientist', imagePath: '../../../assets/images/avatar.png')
                     ],
                   ),
                   SizedBox(

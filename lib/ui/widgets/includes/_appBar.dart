@@ -1,7 +1,7 @@
 part of ui.widgets;
 
 class applicationBar {
-  Widget getAppBar({path = "../../assets/images/avatar.jpeg"}) {
+  Widget getAppBar({path = "../../assets/images/avatar.png"}) {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
