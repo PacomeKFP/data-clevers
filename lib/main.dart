@@ -37,9 +37,13 @@ class MyApp extends StatelessWidget {
                 name: name));
       default:
         return MaterialPageRoute(
-            builder: (_) => const Page404(
-                  key: Key('notFound'),
-                ),
+            builder: (_) => BlocBuilder<GlobalsCubit, GlobalsState>(
+              builder: (context, globalsState) {
+                return const Page404(
+                      key: Key('notFound'),
+                    );
+              }
+            ),
             settings: RouteSettings(
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
