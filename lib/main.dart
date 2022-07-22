@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'ui/ui.dart';
 
-
 void main() {
   BlocOverrides.runZoned(() => runApp(const MyApp()),
       blocObserver: GlobalsBlocObserver());
@@ -37,13 +36,7 @@ class MyApp extends StatelessWidget {
                 name: name));
       default:
         return MaterialPageRoute(
-            builder: (_) => BlocBuilder<GlobalsCubit, GlobalsState>(
-              builder: (context, globalsState) {
-                return const Page404(
-                      key: Key('notFound'),
-                    );
-              }
-            ),
+            builder: (_) => const Page404(key: Key('notFound')),
             settings: RouteSettings(
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
@@ -52,14 +45,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocProvider(
-      create: (context) => GlobalsCubit(),
-      child: MaterialApp(
-      theme: ThemeData(fontFamily: 'Ubuntu', primaryColor: Colors.green),
-      onGenerateRoute: getRoutes,
-      title: 'Data Clevers',
-    ),
-    );
+        create: (context) => GlobalsCubit(),
+        child: BlocBuilder<GlobalsCubit, GlobalsState>(
+          builder: (context, state) {
+            return MaterialApp(
+              theme: ThemeData(
+                  fontFamily: 'Ubuntu',
+                  primaryColor: Colors.green,
+                  brightness: state.theme),
+              onGenerateRoute: getRoutes,
+              title: 'Data Clevers',
+            );
+          },
+        ));
   }
 }
