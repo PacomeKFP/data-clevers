@@ -12,5 +12,6 @@ class AppStrings {
     AppLanguages.FRENCH: "Bienvenu  !\n\tContinuez à apprendre pour progresser",
     AppLanguages.ENGLISH: "Welcome  !\n\t Stay learning to continue making progress",
   };
+
   
 }
