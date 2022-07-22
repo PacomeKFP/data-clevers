@@ -8,5 +8,6 @@ class AppColors {
   static Color col3 = Color.fromARGB(255, 0, 69, 98);
   // static Color
 
+  
   AppColors._();
 }

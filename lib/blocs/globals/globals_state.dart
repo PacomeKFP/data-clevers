@@ -6,3 +6,4 @@ class GlobalsState {
 
   GlobalsState({this.lang = AppLanguages.FRENCH, this.theme = Brightness.dark});
 }
+

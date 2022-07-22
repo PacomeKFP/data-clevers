@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'globals_state.dart';
-
+part 'globals_observer.dart';
+//theme et langue
 class GlobalsCubit extends Cubit<GlobalsState> {
   GlobalsCubit() : super(GlobalsState());
 
