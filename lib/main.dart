@@ -1,12 +1,7 @@
-import 'package:data_clevers/partials/_Scaffold.dart';
-import 'package:data_clevers/partials/_sidemenu.dart';
-import 'package:data_clevers/partials/_appBar.dart';
-import 'package:data_clevers/views/main.view.dart';
-
-import 'settings/globals.dart';
 import 'package:flutter/material.dart';
+import 'ui/ui.dart';
 
-Globals globals = Globals();
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,43 +9,46 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  Route getRoutes(RouteSettings settings) {
+    var name = settings.name == '/' ? '/home' : settings.name;
+
+    switch (name) {
+      case '/home':
+        //TODO
+        /* 
+    --> on pourrait extraire le nom de l'utilisateur ici et  l'ajouter à la routeName
+          pour faire genre : dataclever.com/pacomekfp/home, dataclever.com/pacomekfp/profil ... 
+    --> on rajouttera une condition ici(liée au statut d'authenticaation) 
+          en fonction duque on envera soit vers home soit vers login-register ! 
+        */
+        return MaterialPageRoute(
+            builder: (_) => UserHome(key: UniqueKey()),
+            settings: RouteSettings(
+                arguments: settings.arguments as Map<String, dynamic>?,
+                name: name));
+      case '/login':
+        return MaterialPageRoute(
+            builder: (_) => AuthenticationPage(key: UniqueKey()),
+            settings: RouteSettings(
+                arguments: settings.arguments as Map<String, dynamic>?,
+                name: name));
+      default:
+        return MaterialPageRoute(
+            builder: (_) => const Page404(
+                  key: Key('notFound'),
+                ),
+            settings: RouteSettings(
+                arguments: settings.arguments as Map<String, dynamic>?,
+                name: name));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: globals.projectName,
-      theme: Theme.of(context).copyWith(
-        colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color.fromARGB(255, 250, 250, 250),
-            ),
-      ),
-      home: MyHomePage(title: globals.projectName.toString()),
+      theme: ThemeData(fontFamily: 'Ubuntu', primaryColor: Colors.green),
+      onGenerateRoute: getRoutes,
+      title: 'Data Clevers',
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  String activeMenuKey = "cours";
-
-  void handlesideMenuCallBack(String key) {
-    setState(() {
-      activeMenuKey = key;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffolder().getScaffold(
-        context: context, Home:const MainPage(), callback: handlesideMenuCallBack);
-  }
-}
-
-
