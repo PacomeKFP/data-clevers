@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
+part of ui;
 
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class Page3 extends StatefulWidget {
+  const Page3({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Page3> createState() => _Page3State();
 }
 
-class _MyAppState extends State<MyApp> {
+class _Page3State extends State<Page3> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,21 +16,21 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Page3Affiche(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Page3Affiche extends StatefulWidget {
+  const Page3Affiche({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Page3Affiche> createState() => _Page3AfficheState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Page3AfficheState extends State<Page3Affiche> {
   @override
   Widget build(BuildContext context) {
     double largeur = MediaQuery.of(context).size.width;
@@ -131,7 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     "Python est le langage de programmation de prédilection de référence, je dirais même préféré"
                                     "des Data Scientists. En effet, Python est connu pour sa simplicité du point de la syntaxe. Python"
                                     "possède également une communauté active et un vaste choix de bibliothèques et de ressources qui"
-                                    "permettent d’effectuer des taches de Data Science sans tracas.""",
+                                    "permettent d’effectuer des taches de Data Science sans tracas."
+                                    "",
                                     style: TextStyle(
                                       fontFamily: 'Ubuntu',
                                     ),

@@ -23,10 +23,7 @@ class applicationBar {
                         borderRadius: BorderRadius.horizontal(
                             left: Radius.circular(50),
                             right: Radius.circular(50))),
-                    child: Text(
-                      "Apprendre",
-                      style: TextStyle(backgroundColor: Colors.amber),
-                    )),
+                    child: btn1()),
               ],
             ),
           ),

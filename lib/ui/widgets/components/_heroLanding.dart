@@ -1,7 +1,7 @@
 part of ui.widgets;
 
 
-Widget herolanding(BuildContext context) {
+Widget herolanding(BuildContext context, {title, text, nbCours}) {
     double largeur = MediaQuery.of(context).size.width * 0.8;
     return Center(
       child: Container(
@@ -19,8 +19,8 @@ Widget herolanding(BuildContext context) {
                 const SizedBox(height: 40,),
                 Positioned(
                   child: Container(
-                    child: const Text(
-                      'Cours' ,
+                    child:  Text(
+                      nbCours ,
                       style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ Widget herolanding(BuildContext context) {
                     color: const Color(0xff004562),
                     height: 30,
                     width: 300,
-                    child: const Text('Apprentissage pratique' , style: const TextStyle(
+                    child:  Text(title , style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -51,8 +51,8 @@ Widget herolanding(BuildContext context) {
                 Container(
                   height: 100,
                   width: 300,
-                  child: const Positioned(
-                    child: const Text('Il est temps de retrousser vos manches nous apprenons mieux en faisant. Tous nos cours interactifs',
+                  child:  Positioned(
+                    child:  Text(text,
                             style: TextStyle(color: const Color(0xff004562) , fontSize: 17,),
                     ),
                     ),
@@ -75,11 +75,11 @@ Widget herolanding(BuildContext context) {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const CircleAvatar(
+                            children:const [
+                              CircleAvatar(
                                 backgroundColor: Color(0xff5FB3D4),
                               ),
-                              const CircleAvatar(
+                              CircleAvatar(
                                 backgroundColor: Color(0xffD9D9D9),
                               ),
                             ],
