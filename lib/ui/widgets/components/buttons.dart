@@ -9,8 +9,7 @@ Widget btn1() {
     color: AppColors.col3,
     // height: 42,
     child: ElevatedButton(
-      onPressed: () => {
-        // print("object"),
+      onPressed: () => {// print("object"),
       },
       style: TextButton.styleFrom(
         primary: const Color.fromRGBO(255, 255, 255, 1),
@@ -91,6 +90,7 @@ Widget centered() {
 }
 
 Widget boxSection({title, description, teacher, domain, imagePath}) => Container(
+  
   width: 400,
   height: 445,
   margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),

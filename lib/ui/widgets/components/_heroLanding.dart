@@ -1,8 +1,12 @@
 part of ui.widgets;
 
+Widget ghuhdjdasn() {
+  return Center();
+}
+
 Widget herolanding(BuildContext context, {title, text, nbCours}) {
   double largeur = MediaQuery.of(context).size.width * 0.8;
-  double longueur = MediaQuery.of(context).size.height ;
+  double longueur = MediaQuery.of(context).size.height;
   return Center(
     child: Container(
       width: largeur,
@@ -16,8 +20,8 @@ Widget herolanding(BuildContext context, {title, text, nbCours}) {
         children: <Widget>[
           Column(
             children: [
-               SizedBox(
-                height: longueur*0.02,
+              SizedBox(
+                height: longueur * 0.02,
               ),
               Positioned(
                 child: Container(
@@ -37,16 +41,16 @@ Widget herolanding(BuildContext context, {title, text, nbCours}) {
               Diagonal(
                 axis: Axis.vertical,
                 position: DiagonalPosition.TOP_RIGHT,
-                clipHeight: largeur*0.012,
+                clipHeight: largeur * 0.012,
                 child: Container(
-                  padding: EdgeInsets.only(top: largeur*0.006),
+                  padding: EdgeInsets.only(top: largeur * 0.006),
                   color: const Color(0xff004562),
-                  height: largeur*0.044,
-                  width: largeur*0.44,
+                  height: largeur * 0.044,
+                  width: largeur * 0.44,
                   child: Text(
                     title,
-                    style:  TextStyle(
-                      fontSize: largeur*0.022,
+                    style: TextStyle(
+                      fontSize: largeur * 0.022,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -54,8 +58,8 @@ Widget herolanding(BuildContext context, {title, text, nbCours}) {
                   ),
                 ),
               ),
-             SizedBox(
-                height:longueur*0.015,
+              SizedBox(
+                height: longueur * 0.015,
               ),
               Container(
                 height: 100,
@@ -106,14 +110,13 @@ Widget herolanding(BuildContext context, {title, text, nbCours}) {
                             ),
                           ],
                         ),
-                        
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                             CircleAvatar(
+                            CircleAvatar(
                               backgroundColor: const Color(0xffD9D9D9),
                             ),
-                             CircleAvatar(
+                            CircleAvatar(
                               backgroundColor: const Color(0xff5FB3D4),
                             ),
                           ],

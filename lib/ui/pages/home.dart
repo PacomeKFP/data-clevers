@@ -27,8 +27,8 @@ class UserHome extends StatelessWidget {
                       },
                       child: Text(AppStrings.enLang[state.lang]!)),
                   Switch(
-                      activeTrackColor: Colors.white,
-                      inactiveTrackColor: Colors.grey,
+                      activeTrackColor: AppColors.blanc,
+                      inactiveTrackColor: AppColors.grey,
                       value: state.theme == Brightness.dark,
                       onChanged: (bool isDark) {
                         context.read<GlobalsCubit>().changeTheme(
