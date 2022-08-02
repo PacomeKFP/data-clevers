@@ -4,13 +4,12 @@ const kBue = Color.fromARGB(255, 0, 69, 98);
 
 Widget btn1() {
   return Container(
-    width: 300,
+    // width: 300,
     margin: const EdgeInsets.only(top: 10.0),
-    color: const Color(0xFFFFFFFF),
-    height: 42,
+    color: AppColors.col3,
+    // height: 42,
     child: ElevatedButton(
-      onPressed: () => {
-        // print("object"),
+      onPressed: () => {// print("object"),
       },
       style: TextButton.styleFrom(
         primary: const Color.fromRGBO(255, 255, 255, 1),
@@ -29,17 +28,12 @@ Widget btn1() {
 
 Widget btn2() {
   return Container(
-    // decoration: BoxDecoration(
-    //   borderRadius: BorderRadius.circular(30)
-    // ),
     width: 300,
     margin: const EdgeInsets.only(top: 10.0),
-    color: const Color(0xFFFFFFFF),
+    color: AppColors.col3,
     height: 42,
     child: TextButton(
-      onPressed: () => {
-        // print("object"),
-      },
+      onPressed: () => {},
       style: TextButton.styleFrom(
         primary: const Color.fromRGBO(255, 255, 255, 1),
         padding: const EdgeInsets.all(20),
@@ -96,17 +90,18 @@ Widget centered() {
 }
 
 Widget boxSection({title, description, teacher, domain, imagePath}) => Container(
+  
   width: 400,
   height: 445,
   margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
   decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(10),
-    gradient: const LinearGradient(
+    gradient:  LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
-        const Color.fromARGB(255, 255, 255, 255),
-        const Color.fromARGB(255, 255, 255, 255),
+        AppColors.col2.withOpacity(0.5),
+        AppColors.col3.withOpacity(0.3),
       ],
     ),
   ),

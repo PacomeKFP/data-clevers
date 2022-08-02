@@ -19,3 +19,4 @@ class AuthenticationPage extends StatelessWidget {
     ));
   }
 }
+

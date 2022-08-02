@@ -35,7 +35,13 @@ class MyApp extends StatelessWidget {
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
 
-      case '/home/cours':
+      case '/page3':
+        return MaterialPageRoute(
+            builder: (_) => Page3(key: UniqueKey()),
+            settings: RouteSettings(
+                arguments: settings.arguments as Map<String, dynamic>?,
+                name: name));
+      case '/page2':
         return MaterialPageRoute(
             builder: (_) => AuthenticationPage(key: UniqueKey()),
             settings: RouteSettings(

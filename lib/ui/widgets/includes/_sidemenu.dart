@@ -15,7 +15,7 @@ Widget SideMenu(
   return Container(
     width: width *0.2,
     padding: EdgeInsets.symmetric(vertical: height/8),
-    color: AppColors.col1,
+    color: AppColors.col3,
     child: ListView(children: [
       Center(
         child: Padding(

@@ -1,7 +1,7 @@
 part of ui.widgets;
 
 class applicationBar {
-  Widget getAppBar({path = "../../assets/images/avatar.jpeg"}) {
+  Widget getAppBar({path = "../../assets/images/avatar.png"}) {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,10 +23,7 @@ class applicationBar {
                         borderRadius: BorderRadius.horizontal(
                             left: Radius.circular(50),
                             right: Radius.circular(50))),
-                    child: Text(
-                      "Apprendre",
-                      style: TextStyle(backgroundColor: Colors.amber),
-                    )),
+                    child: btn1()),
               ],
             ),
           ),
