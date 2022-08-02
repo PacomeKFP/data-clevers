@@ -1,9 +1,9 @@
 part of 'globals_cubit.dart';
 
 class GlobalsState {
-  AppLanguages lang;
+  String lang;
   Brightness theme;
 
-  GlobalsState({this.lang = AppLanguages.FRENCH, this.theme = Brightness.dark});
+  GlobalsState({this.lang = 'fr', this.theme = Brightness.dark});
 }
 

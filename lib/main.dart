@@ -34,6 +34,13 @@ class MyApp extends StatelessWidget {
             settings: RouteSettings(
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
+
+      case '/home/cours':
+        return MaterialPageRoute(
+            builder: (_) => AuthenticationPage(key: UniqueKey()),
+            settings: RouteSettings(
+                arguments: settings.arguments as Map<String, dynamic>?,
+                name: name));
       default:
         return MaterialPageRoute(
             builder: (_) => const Page404(key: Key('notFound')),
@@ -50,6 +57,7 @@ class MyApp extends StatelessWidget {
         child: BlocBuilder<GlobalsCubit, GlobalsState>(
           builder: (context, state) {
             return MaterialApp(
+              initialRoute: '/home',
               theme: ThemeData(
                   fontFamily: 'Ubuntu',
                   primaryColor: Colors.green,

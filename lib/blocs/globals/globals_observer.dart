@@ -9,6 +9,7 @@ class GlobalsBlocObserver extends BlocObserver {
     print(event);
   }
 
+
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     // TODO: implement onError
