@@ -9,10 +9,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-
+// part 'pages/getStarted.dart';
 part 'pages/home.dart';
 part 'pages/page404.dart';
 part 'pages/authentication.dart';
 
-part 'pages/page2.dart';
-part 'pages/page3.dart';
+
+part 'pages/course.dart';

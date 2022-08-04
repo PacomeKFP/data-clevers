@@ -11,6 +11,8 @@ class AppColors {
   static Color noir = const Color(0xFF000000);
   static Color blanc = const Color(0xFFFFFEFE);
   static Color grey =  Colors.grey;
+
+  
   // ignore: non_constant_identifier_names
   static Color blue_blak =const Color(0xff05192d);
   static Color orange =const Color(0xffff5400);

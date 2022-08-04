@@ -1,4 +1,9 @@
-part of ui;
+import 'package:data_clevers/blocs/globals/globals_cubit.dart';
+import 'package:data_clevers/ui/widgets/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:data_clevers/config/config.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class Page3 extends StatefulWidget {
@@ -29,6 +34,7 @@ class Page3Affiche extends StatefulWidget {
   @override
   State<Page3Affiche> createState() => _Page3AfficheState();
 }
+
 
 class _Page3AfficheState extends State<Page3Affiche> {
   @override
@@ -164,10 +170,13 @@ class _Page3AfficheState extends State<Page3Affiche> {
                         ],
                       ),
                     ),
+                  
+                  
                   ],
                 ),
               ),
             ),
+          
           ],
         ),
       ),

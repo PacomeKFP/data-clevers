@@ -52,10 +52,12 @@ class AppStrings {
   };
 
   static Map<String, String> landingText = {
-    AppLanguages.FRENCH: 'Il est temps de retrousser vos manches nous apprenons mieux en faisant. Tous nos cours interactifs',
-    AppLanguages.ENGLISH: "It's time to roll up your sleeves we learn best by doing. All our interactive courses",
+    AppLanguages.FRENCH:
+        'Il est temps de retrousser vos manches nous apprenons mieux en faisant. Tous nos cours interactifs',
+    AppLanguages.ENGLISH:
+        "It's time to roll up your sleeves we learn best by doing. All our interactive courses",
   };
-static Map<String, String> frLang = {
+  static Map<String, String> frLang = {
     AppLanguages.FRENCH: 'Francais',
     AppLanguages.ENGLISH: 'French',
   };
@@ -64,5 +66,23 @@ static Map<String, String> frLang = {
     AppLanguages.FRENCH: 'Anglais',
     AppLanguages.ENGLISH: 'English',
   };
-  
+
+  static Map<String, String> welcomeText = {
+    AppLanguages.FRENCH: 'Bienvenue sur DataClevers',
+    AppLanguages.ENGLISH: 'Welcome to DataClevers',
+  };
+  static Map<String, String> whatDoYouWant = {
+    AppLanguages.FRENCH: 'Que Voulez vous apprendre en premier ?',
+    AppLanguages.ENGLISH: 'what do you want to learn first ?',
+  };
+
+//page de  profil
+  static Map<String, String> completeyourProfile = {
+    AppLanguages.FRENCH: 'Editez votre profil',
+    AppLanguages.ENGLISH: 'edit your profile',
+  };
+  static Map<String, String> back = {
+    AppLanguages.FRENCH: 'Retour',
+    AppLanguages.ENGLISH: 'back',
+  };
 }
