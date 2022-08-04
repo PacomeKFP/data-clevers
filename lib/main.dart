@@ -1,4 +1,8 @@
+
 import 'package:data_clevers/blocs/blocs.dart';
+import 'package:data_clevers/ui/pages/getStarted.dart';
+import 'package:data_clevers/ui/pages/profile.dart';
+import 'package:data_clevers/ui/widgets/components/formular.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'ui/ui.dart';
@@ -34,19 +38,53 @@ class MyApp extends StatelessWidget {
             settings: RouteSettings(
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
-      case '/page3':
+
+      case '/getStarted':
         return MaterialPageRoute(
-            builder: (_) => Page3(key: UniqueKey()),
+            builder: (_) => GetStarted(key: UniqueKey()),
             settings: RouteSettings(
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
-      case '/page2':
+                break;
+      case '/profile':
         return MaterialPageRoute(
-            builder: (_) => AuthenticationPage(key: UniqueKey()),
+            builder: (_) => Profile(key: UniqueKey()),
             settings: RouteSettings(
                 arguments: settings.arguments as Map<String, dynamic>?,
                 name: name));
+                break;
+      case '/formular':
+        return MaterialPageRoute(
+            builder: (_) => FormTester(key: UniqueKey()),
+            settings: RouteSettings(
+                arguments: settings.arguments as Map<String, dynamic>?,
+                name: name));
+                break;
+
       default:
+        //Cas ou on peut etre dans un deep link
+        if (Uri.parse(settings.name!).pathSegments.length == 2) {
+          print('lenght 2');
+          //deep linking test01
+          Map<String, dynamic> args = {};
+             if(settings.arguments != null)
+              args.addAll(settings.arguments as Map<String, dynamic>);
+              
+          if (Uri.parse(settings.name!).pathSegments[0] == 'course') {
+            args.addAll({'cours_id': Uri.parse(settings.name!).pathSegments[1].toString()});
+          print("lenght ${args['cours_id']}");
+            return MaterialPageRoute(
+              
+                builder: (_) => Course(
+                    key: Key(
+                        Uri.parse(settings.name!).pathSegments[1].toString())),
+                settings: RouteSettings(
+                    arguments:args,
+                    name: name));
+                    break;
+          }
+        }
+
         return MaterialPageRoute(
             builder: (_) => const Page404(key: Key('notFound')),
             settings: RouteSettings(
@@ -62,6 +100,7 @@ class MyApp extends StatelessWidget {
         child: BlocBuilder<GlobalsCubit, GlobalsState>(
           builder: (context, state) {
             return MaterialApp(
+              initialRoute: '/home',
               theme: ThemeData(
                   fontFamily: 'Ubuntu',
                   primaryColor: Colors.green,

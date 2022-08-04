@@ -18,11 +18,7 @@ class Scaffolder {
             ? null
             : Drawer(
                 width: MediaQuery.of(context).size.width * 0.6,
-                child: SideMenu(
-                  context: context,
-                  blocks: blocks,
-                  activeKey: "cours",
-                ),
+                child: Sidebar()
               ),
         appBar: AppBar(
           title: applicationBar().getAppBar(),
@@ -33,11 +29,7 @@ class Scaffolder {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (!drawer)
-              SideMenu(
-                context: context,
-                blocks: blocks,
-                activeKey: "cours",
-              ),
+              Sidebar(),
             Home
           ],
         )));

@@ -1,6 +1,5 @@
 part of ui.widgets;
 
-
 Widget SideMenu(
     {required BuildContext context,
     required List<SideBlock> blocks,
