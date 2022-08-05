@@ -1,10 +1,4 @@
-import 'dart:html';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+part of models;
 
 class FormularField extends StatefulWidget {
   final String label;
@@ -13,19 +7,21 @@ class FormularField extends StatefulWidget {
   final bool isObscurable; //false
   final TextInputType inputType;
   final String? defaultValue;
-  final TextEditingController? controller;
+  TextEditingController? controller;
   final Type type;
+  final bool isLongText;
 
-  const FormularField(
+  FormularField(
       {Key? key,
       required this.label,
       this.hintText,
       this.isRequired = false,
       this.isObscurable = false,
       this.inputType = TextInputType.text,
-      required this.defaultValue,
+      this.defaultValue,
       this.controller,
-      this.type = String})
+      this.type = String,
+      this.isLongText = false})
       : super(key: key);
 
   @override
@@ -33,46 +29,111 @@ class FormularField extends StatefulWidget {
 }
 
 class FormularFieldState extends State<FormularField> {
-  bool hidden = false;
-  _hide() {
-    setState(() {
-      hidden = !hidden;
-    });
-  }
+  final GlobalKey<FormFieldState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    if (widget.isObscurable == true)
-      hidden = true;
-    else
-      hidden = false;
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FormField<dynamic>(
-          key: GlobalKey<FormState>(),
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) {
-            if ((value == null || value.isEmpty) && widget.isRequired) {
-              return 'This field is required';
-            }
-            return null;
-          },
-          builder: (context) {
-            return TextFormField(
-              initialValue: widget.defaultValue,
-              obscureText: hidden,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText:
-                      widget.hintText == null ? widget.label : widget.label,
-                  labelText: widget.label,
-                  suffixIcon: widget.isObscurable
-                      ? (hidden
-                          ? FaIcon(FontAwesomeIcons.eyeSlash)
-                          : FaIcon(FontAwesomeIcons.eye))
-                      : null),
-            );
-          }),
+    // if (widget.type == Language) return languageFields();
+    return BlocProvider(
+      create: (context) => ToggleBloc(),
+      child: BlocBuilder<ToggleBloc, ToggleState>(builder: (context, state) {
+        bool obscure = (state as ToggleInitialState).isVisible;
+        if (!widget.isObscurable) obscure = false;
+        return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextFormField(
+                    keyboardType: widget.inputType,
+                    maxLines: widget.isLongText == true ? 8 : 1,
+                    key: formKey,
+                    controller: widget.controller,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if ((value == null || value.isEmpty) && widget.isRequired) {
+                        return 'This field is required';
+                      }
+                      return null;
+                    },
+                    obscureText: obscure,
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 10),
+                        border: const OutlineInputBorder(),
+                        hintText: widget.hintText == null
+                            ? widget.label
+                            : widget.label,
+                        labelText: widget.label,
+                        suffix: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            widget.isRequired
+                                ? const FaIcon(
+                                    FontAwesomeIcons.triangleExclamation,
+                                    color: Colors.redAccent,
+                                    size: 16,
+                                  )
+                                : Visibility(visible: false, child: Wrap()),
+                            widget.isObscurable
+                                ? IconButton(
+                                    onPressed: () => context
+                                        .read<ToggleBloc>()
+                                        .add(TogleHideEvent()),
+                                    icon: obscure
+                                        ? const FaIcon(
+                                            FontAwesomeIcons.eyeSlash)
+                                        : const FaIcon(FontAwesomeIcons.eye))
+                                : Visibility(visible: false, child: Wrap())
+                          ],
+                        ))),
+              ],
+            ));
+      }),
     );
   }
+
+  // Widget languageFields() {
+  //   List<Language> languages = [
+  //     Language(abbr: 'fr', name: 'Français'),
+  //     Language(abbr: 'en', name: 'Anglais'),
+  //     Language(abbr: 'es', name: 'Espagnol'),
+  //     Language(abbr: 'all', name: 'Allemand'),
+  //   ];
+
+  //   final _items = languages
+  //       .map((language) => MultiSelectItem<Language>(language, language.name))
+  //       .toList();
+  //   return FormField(builder: (context) {
+  //     return MultiSelectDialogField(
+  //       autovalidateMode: AutovalidateMode.onUserInteraction,
+  //       items: _items,
+  //       title: const Text("Languages"),
+  //       selectedColor: Colors.blue,
+  //       decoration: BoxDecoration(
+  //         color: Colors.blue.withOpacity(0.1),
+  //         borderRadius: const BorderRadius.all(Radius.circular(40)),
+  //         border: Border.all(
+  //           color: Colors.blue,
+  //           width: 2,
+  //         ),
+  //       ),
+  //       buttonIcon: const Icon(
+  //         Icons.pets,
+  //         color: Colors.blue,
+  //       ),
+  //       buttonText: Text(
+  //         "languages",
+  //         style: TextStyle(
+  //           color: Colors.blue[800],
+  //           fontSize: 16,
+  //         ),
+  //       ),
+  //       onConfirm: (results) {
+  //         //_selectedAnimals = results;
+  //       },
+  //     );
+  //   });
+  // }
+
 }

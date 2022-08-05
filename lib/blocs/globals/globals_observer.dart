@@ -1,7 +1,6 @@
 part of 'globals_cubit.dart';
 
 
-
 class GlobalsBlocObserver extends BlocObserver {
   @override
   void onEvent(Bloc bloc, Object? event) {
