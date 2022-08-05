@@ -24,46 +24,43 @@ class GetStarted extends StatelessWidget {
     ];
 
     IconData randomIcon2() => iconData[Random().nextInt(iconData.length)];
-    return Scaffold(
-      body: BlocBuilder<GlobalsCubit, GlobalsState>(
-        builder: (context, state) {
-          return Container(
-            alignment: Alignment.center,
-            width: width,
-            height: height,
-            child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(
-                    vertical: height / 16),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AppLogo(),
-                      Text(
-                        textAlign: TextAlign.center,
-                        AppStrings.welcomeText[state.lang]!,
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        AppStrings.whatDoYouWant[state.lang]!,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Wrap(
-                        runSpacing: 20,
-                        spacing: 20,
-                        children: List<AnimatedCourse>.generate(
-                            Random().nextInt(10),
-                            (index) => AnimatedCourse(
-                                icon: randomIcon2(),
-                                title: "Texte $index")).toList(),
-                      )
-                    ])),
-          );
-        },
-      ),
+    return BlocBuilder<GlobalsCubit, GlobalsState>(
+      builder: (context, state) {
+        return Container(
+          alignment: Alignment.center,
+          width: width,
+          height: height,
+          child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(vertical: height / 16),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AppLogo(),
+                    Text(
+                      textAlign: TextAlign.center,
+                      AppStrings.welcomeText[state.lang]!,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      AppStrings.whatDoYouWant[state.lang]!,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Wrap(
+                      runSpacing: 20,
+                      spacing: 20,
+                      children: List<AnimatedCourse>.generate(
+                          Random().nextInt(10),
+                          (index) => AnimatedCourse(
+                              icon: randomIcon2(),
+                              title: "Texte $index")).toList(),
+                    )
+                  ])),
+        );
+      },
     );
   }
 }
@@ -79,24 +76,26 @@ class AnimatedCourse extends StatefulWidget {
 }
 
 class _AnimatedCourseState extends State<AnimatedCourse> {
-  
-  onEntered(bool e){
+  onEntered(bool e) {
     setState(() {
       isHover = e;
     });
   }
+
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
-  final hoveredTransform = Matrix4.identity()..translate(-5, -5, 5)..scale(1.01);
-  final transform = isHover ? hoveredTransform : Matrix4.identity();
+    final hoveredTransform = Matrix4.identity()
+      ..translate(-5, -5, 5)
+      ..scale(1.01);
+    final transform = isHover ? hoveredTransform : Matrix4.identity();
     return MouseRegion(
-      onEnter: (e)=>onEntered(true),
-      onExit: (e)=>onEntered(false),
+      onEnter: (e) => onEntered(true),
+      onExit: (e) => onEntered(false),
       child: InkWell(
-        onTap: ()=>Navigator.pushNamed(context, '/course/${widget.title}'),
+        onTap: () => Navigator.pushNamed(context, '/course/${widget.title}'),
         child: AnimatedContainer(
-          curve:Sprung.overDamped,
+          curve: Sprung.overDamped,
           duration: Duration(milliseconds: 200),
           transform: transform,
           decoration: BoxDecoration(

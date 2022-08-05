@@ -23,12 +23,13 @@ class _LoginScreenState extends State<LoginScreen> {
       onLogin: LoginFunctions(context).onLogin,
       onSignup: LoginFunctions(context).onSignup,
       onForgotPassword: LoginFunctions(context).onForgotPassword,
-      logo: Image.asset('assets/images/logo.gif'),
+      
+      logo: Image.asset('assets/images/logo.png'),
       // backgroundImage: 'images/background_image.jpg',
       signUpMode: SignUpModes.both,
       socialLogins: _socialLogins(context),
       loginDesktopTheme: _desktopTheme,
-      loginMobileTheme: _mobileTheme,
+      loginMobileTheme: _mobileTheme.copyWith(actionButtonStyle: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states)=>Colors.blue)), backgroundColor: AppColors.backgroungcolors,loadingButtonColor: AppColors.blue),
       loginTexts: _loginTexts,
       changeLanguageCallback: (LanguageOption? _language) {
         if (_language != null) {
@@ -46,14 +47,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   static List<LanguageOption> get _languageOptions => const <LanguageOption>[
         LanguageOption(
-          value: 'Turkish',
-          code: 'TR',
-          iconPath: 'assets/images/tr.png',
+          value: 'Français',
+          code: 'FR',
+          iconPath: '../assets/images/fr.png',
         ),
         LanguageOption(
           value: 'English',
           code: 'EN',
-          iconPath: 'assets/images/en.png',
+          iconPath: '../assets/images/en.png',
         ),
       ];
 
@@ -93,11 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
   /// You can adjust the texts in the screen according to the current language
   /// With the help of [LoginTexts], you can create a multilanguage scren.
   String get _username =>
-      language.code == 'TR' ? "Nom d'utilisateur" : 'Username';
+      language.code == 'FR' ? "Nom d'utilisateur" : 'Username';
 
-  String get _login => language.code == 'TR' ? "Connexion" : 'Login';
+  String get _login => language.code == 'FR' ? "Connexion" : 'Login';
 
-  String get _signup => language.code == 'TR' ? "Inscription" : 'Sign Up';
+  String get _signup => language.code == 'FR' ? "Inscription" : 'Sign Up';
 
   /// Social login options, you should provide callback function and icon path.
   /// Icon paths should be the full path in the assets
@@ -105,14 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
   List<SocialLogin> _socialLogins(BuildContext context) => <SocialLogin>[
         SocialLogin(
             callback: () async => LoginFunctions(context).socialLogin('Google'),
-            iconPath: 'assets/images/google.png'),
-        SocialLogin(
-            callback: () async =>
-                LoginFunctions(context).socialLogin('Facebook'),
-            iconPath: 'assets/images/facebook.png'),
+            iconPath: '../assets/images/google.png'),
+        // SocialLogin(
+        //     callback: () async =>
+        //         LoginFunctions(context).socialLogin('Facebook'),
+        //     iconPath: '../../assets/images/facebook.png'),
         SocialLogin(
             callback: () async => LoginFunctions(context).socialLogin('Github'),
-            iconPath: 'assets/images/linkedin.png'),
+            iconPath: '../assets/images/github.png'),
       ];
 }
 
@@ -128,6 +129,8 @@ class LoginFunctions {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.of(context).pop();
     DialogBuilder(context).showResultDialog('Successful login.');
+
+    Navigator.pushNamed(context, '/home');
     return null;
   }
 
@@ -147,6 +150,8 @@ class LoginFunctions {
     Navigator.of(context).pop();
     DialogBuilder(context)
         .showResultDialog('Successful social login with $type.');
+
+    Navigator.pushNamed(context, '/home');
     return null;
   }
 

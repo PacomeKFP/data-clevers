@@ -3,6 +3,10 @@ part of settings;
 Widget AppLogo({AppLogoSize size = AppLogoSize.small}) {
   double? width, height;
   switch (size) {
+    case AppLogoSize.smallest:
+      width = 30;
+      height = 50;
+      break;
     case AppLogoSize.small:
       width = 50;
       height = 80;

@@ -16,8 +16,6 @@ class _ExperienceProfileState extends State<ExperienceProfile> {
           employerUrl: list[2],
           employerContact: list[3],
           domain: list[4],
-          // startDate: list[5],
-          // endDate: list[6],
           ));
     });
   }

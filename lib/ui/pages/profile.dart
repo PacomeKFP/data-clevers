@@ -46,9 +46,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(
+    return Container(
         height: height,
         width: width,
         alignment: Alignment.topCenter,
@@ -101,7 +99,6 @@ class _ProfileState extends State<Profile> {
             )
           ],
         )),
-      ),
     );
   }
 
