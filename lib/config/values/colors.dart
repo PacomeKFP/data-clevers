@@ -1,7 +1,7 @@
 part of settings;
 
-class AppColors {
   // Clors(super.value);
+  class AppColors{
   static Color col1 = const Color.fromARGB(255, 0, 69, 98);
   static Color col3 = const Color.fromARGB(255, 0, 69, 98);
   static Color col2 = const Color.fromARGB(124, 33, 99, 53);

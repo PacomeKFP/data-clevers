@@ -7,20 +7,27 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 part 'globals_state.dart';
 part 'globals_observer.dart';
+
+extension on Brightness {
+  String get label => this == Brightness.dark ? 'dark' : 'light';
+}
+extension on String{
+  Brightness get value => this == 'dark' ? Brightness.dark : Brightness.light;
+}
 //theme et langue
 class GlobalsCubit extends Cubit<GlobalsState> {
   GlobalsCubit() : super(GlobalsState());
   
   void init() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    state.lang = prefs.getString('lang')!;
+    state.lang = prefs.getString('lang') ?? 'fr';
     state.theme =getAppThe(prefs.getString('theme'));
   }
 
   void save() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('lang', state.lang);
-    prefs.setString('lang', unStrTheme(state.theme));
+    prefs.setString('theme', unStrTheme(state.theme));
   }
 
   void changeTheme(Brightness brightness) {
@@ -35,16 +42,13 @@ class GlobalsCubit extends Cubit<GlobalsState> {
     save();
   }
 
-  
-
-  
 
   Brightness getAppThe(String? theme) {
     switch (theme) {
-      case 'light':
-        return Brightness.light;
-      default:
+      case 'dark':
         return Brightness.dark;
+      default:
+        return Brightness.light;
     }
   }
   String unStrTheme(Brightness theme) {

@@ -1,13 +1,20 @@
+library profile;
+
 import 'package:data_clevers/blocs/blocs.dart';
 import 'package:data_clevers/config/config.dart';
-import 'package:data_clevers/ui/pages/profile/about.dart';
-import 'package:data_clevers/ui/pages/profile/certification.dart';
-import 'package:data_clevers/ui/pages/profile/competences.dart';
-import 'package:data_clevers/ui/pages/profile/education.dart';
-import 'package:data_clevers/ui/pages/profile/experience.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../models/models.dart';
+import '../widgets/widgets.dart';
+
+
+part 'profile/about.dart';
+part 'profile/certification.dart';
+part 'profile/competences.dart';
+part 'profile/education.dart';
+part 'profile/experience.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -15,6 +22,8 @@ class Profile extends StatefulWidget {
   @override
   State<Profile> createState() => _ProfileState();
 }
+  List<WorkExperience> experiences = [];
+  List<Education> educations = [];
 
 class _ProfileState extends State<Profile> {
   List<Widget> tabItems = [
@@ -26,7 +35,9 @@ class _ProfileState extends State<Profile> {
   ];
 
   Widget get tabpage => AnimatedContainer(
-    
+    decoration: BoxDecoration(
+      color: Colors.transparent,
+    ),
       duration: Duration(milliseconds: 200), child: tabItems[_selectedIndex]);
 
   int _selectedIndex = 0;
@@ -46,7 +57,6 @@ class _ProfileState extends State<Profile> {
           children: [
             BlocBuilder<GlobalsCubit, GlobalsState>(builder: (context, state) {
               return Container(
-                color: AppColors.col4,
                 width: width,
                 padding: EdgeInsets.symmetric(
                     horizontal: width < 800 ? 0 : (width - 800) / 2),
@@ -77,10 +87,7 @@ class _ProfileState extends State<Profile> {
                 ),
               );
             }),
-            const Divider(
-              thickness: 5,
-              color: Colors.transparent,
-            ),
+            const Divider(thickness: 5, color: Colors.transparent),
             Container(
               width: 800,
               alignment: Alignment.center,
@@ -110,35 +117,35 @@ class _ProfileState extends State<Profile> {
         FlashyTabBarItem(
           icon: const Icon(Icons.event),
           title: const Text(
-            'About',
+            'About Me',
             style: TextStyle(color: Colors.blue),
           ),
         ),
         FlashyTabBarItem(
           icon: const Icon(Icons.work_history),
           title: const Text(
-            'Experience',
+            'My Work Experiences',
             style: TextStyle(color: Colors.blue),
           ),
         ),
         FlashyTabBarItem(
           icon: const Icon(Icons.school_outlined),
           title: const Text(
-            'Education',
+            'My Education',
             style: TextStyle(color: Colors.blue),
           ),
         ),
         FlashyTabBarItem(
           icon: const Icon(Icons.settings),
           title: const Text(
-            'Certification',
+            'My Certifications',
             style: TextStyle(color: Colors.blue),
           ),
         ),
         FlashyTabBarItem(
           icon: const Icon(Icons.bar_chart_outlined),
           title: const Text(
-            'capacities',
+            'My Capacities',
             style: TextStyle(color: Colors.blue),
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+part of profile;
 
 class EducationProfile extends StatelessWidget {
   const EducationProfile({Key? key}) : super(key: key);

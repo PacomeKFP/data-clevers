@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+part of profile;
 
 class CompetenceProfile extends StatelessWidget {
   const CompetenceProfile({Key? key}) : super(key: key);
