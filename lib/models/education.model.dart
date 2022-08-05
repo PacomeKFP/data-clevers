@@ -7,8 +7,13 @@ class Education extends StatelessWidget {
   final DateTime? startDate;
   final DateTime? endDate;
 
-  const Education({super.key, required this.diplomas, this.domain, this.school, this.startDate, this.endDate});
-
+  const Education(
+      {super.key,
+      required this.diplomas,
+      this.domain,
+      this.school,
+      this.startDate,
+      this.endDate});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,6 @@ class Education extends StatelessWidget {
               ],
             ),
           ),
-
           const Divider(thickness: 1, color: Colors.grey, indent: 10),
         ],
       ),

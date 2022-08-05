@@ -24,6 +24,8 @@ class Profile extends StatefulWidget {
 }
   List<WorkExperience> experiences = [];
   List<Education> educations = [];
+  List<Competence> competences = [];
+  List<Certification> certifications = [];
 
 class _ProfileState extends State<Profile> {
   List<Widget> tabItems = [

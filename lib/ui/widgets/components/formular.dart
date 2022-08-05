@@ -34,19 +34,20 @@ class Formular extends StatelessWidget {
       alignment: Alignment.center,
       // padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       
-      decoration:  BoxDecoration(
-        color: Colors.white10,
+      decoration:const  BoxDecoration(
+        color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          boxShadow: [
-            BoxShadow(
-                offset: Offset(5, 5),
-                // blurRadius: 12,
-                blurStyle: BlurStyle.outer),
-            BoxShadow(
-                offset: Offset(-5, 5),
-                // blurRadius: 12,
-                blurStyle: BlurStyle.outer)
-          ]),
+          // boxShadow: [
+          //   BoxShadow(
+          //       offset: Offset(5, 5),
+          //       blurRadius: 12,
+          //       blurStyle: BlurStyle.outer),
+          //   BoxShadow(
+          //       offset: Offset(-5, 5),
+          //       blurRadius: 12,
+          //       blurStyle: BlurStyle.outer)
+          // ]
+          ),
       child: Column(
         children: [
           Form(
