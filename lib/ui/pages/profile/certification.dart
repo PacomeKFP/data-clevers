@@ -14,7 +14,7 @@ class _CertificationProfileState extends State<CertificationProfile> {
           certificateName: list[0],
           domain: list[1],
           transmitter: list[2],
-          date: list[3],
+          // date: list[3],
           ));
     });
   }
