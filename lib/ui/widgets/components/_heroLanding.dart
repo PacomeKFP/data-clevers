@@ -72,6 +72,7 @@ Widget herolanding(BuildContext context, {title, text, nbCours}) {
               ),
             ],
           ),
+        // if(largeur*0.4>660)
           Diagonal(
             clipHeight: largeur * 0.1,
             axis: Axis.vertical,
@@ -124,7 +125,7 @@ Widget herolanding(BuildContext context, {title, text, nbCours}) {
                 ),
               ),
             ),
-          )
+        )
         ],
       ),
     ),

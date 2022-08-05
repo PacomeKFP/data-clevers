@@ -56,6 +56,7 @@ class _ExperienceProfileState extends State<ExperienceProfile> {
       callback: (list) => _addExperience(list),
     );
     AlertDialog popUpFormular = AlertDialog(
+      backgroundColor:Colors.white,
       content: SingleChildScrollView(child: form),
       contentPadding: EdgeInsets.zero,
       actions: [
@@ -83,7 +84,7 @@ class _ExperienceProfileState extends State<ExperienceProfile> {
                 builder: (context) => popUpFormular,
                 routeSettings: RouteSettings(
                     name:
-                        '${ModalRoute.of(context)!.settings.name}/addworkExperience')),
+                        '${ModalRoute.of(context)!.settings.name}/addEducation')),
             icon: const Icon(Icons.add),
             label: const Text('Add a work Eperience')),
       )

@@ -6,6 +6,7 @@ class Course extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+<<<<<<< HEAD
     return Container(
         height: MediaQuery.of(context).size.height * 0.8,
         child: SingleChildScrollView(
@@ -29,6 +30,35 @@ class Course extends StatelessWidget {
                               fontSize: 25,
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
+=======
+    return Scaffolder().getScaffold(
+        context: context,
+        Home: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: 160,
+                    width: width * 0.65,
+                    margin: const EdgeInsets.fromLTRB(4, 8, 8, 4),
+                    padding: const EdgeInsets.fromLTRB(15, 60, 2, 0),
+                    decoration: const BoxDecoration(color: Color(0xff004562)),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Introduction à Python',
+                              style: TextStyle(
+                                  fontFamily: 'Ubuntu',
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+>>>>>>> 9e90456df389e36d8862c445671607e58480e0a8
                         ),
                       ],
                     ),
