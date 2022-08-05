@@ -11,7 +11,7 @@ class Course extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffolder().getScaffold(
         context: context,
-        Home: Container(
+        Home: SizedBox(
             height: MediaQuery.of(context).size.height * 0.8,
             child: SingleChildScrollView(
               child: Column(
