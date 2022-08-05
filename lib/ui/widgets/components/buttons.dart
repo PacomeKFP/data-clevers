@@ -89,10 +89,10 @@ Widget centered() {
   );
 }
 
-Widget boxSection({title, description, teacher, domain, imagePath}) => Container(
-  
-  width: 400,
-  height: 445,
+Widget boxSection({title, description, teacher, domain, imagePath}) => 
+Container(
+  width: 300,
+  height: 500,
   margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
   decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(10),
@@ -100,8 +100,8 @@ Widget boxSection({title, description, teacher, domain, imagePath}) => Container
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
-        AppColors.col2.withOpacity(0.5),
-        AppColors.col3.withOpacity(0.3),
+        Color.fromARGB(255, 220, 218, 218).withOpacity(0.5),
+        Color.fromARGB(255, 220, 218, 218).withOpacity(0.5),
       ],
     ),
   ),

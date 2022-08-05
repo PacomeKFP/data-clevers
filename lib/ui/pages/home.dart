@@ -10,7 +10,7 @@ class UserHome extends StatelessWidget {
         double width = MediaQuery.of(context).size.width;
         return Scaffolder().getScaffold(
           context: context,
-          Home: Container(
+          Home: SizedBox(
             width: width * 0.8,
             child: ListView(
               shrinkWrap: true,
