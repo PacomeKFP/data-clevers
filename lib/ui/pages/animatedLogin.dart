@@ -80,9 +80,9 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: AppColors.blue,
         formFieldBackgroundColor: Colors.white,
         formWidthRatio: 60,
-        // actionButtonStyle: ButtonStyle(
-        //   foregroundColor: MaterialStateProperty.all(Colors.blue),
-        // ),
+        actionButtonStyle: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all(Colors.blue),
+        ),
       );
 
   LoginTexts get _loginTexts => LoginTexts(

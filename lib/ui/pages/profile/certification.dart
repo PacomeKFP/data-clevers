@@ -77,5 +77,5 @@ class _CertificationProfileState extends State<CertificationProfile> {
             label: const Text('Add a new certificate')),
       )
     ]));
-  }
+}
 }
