@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^3.0.1
   iconpacks: ^0.0.3
   percent_indicator: ^4.2.2
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_lints: ^2.0.0

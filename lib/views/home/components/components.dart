@@ -9,6 +9,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../../blocs/authentication/bloc/authentication_bloc.dart';
 import '../../../blocs/tabToggle/tab_toggle_bloc.dart';
 import '../../../models/models.dart';
 

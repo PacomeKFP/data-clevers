@@ -2,12 +2,21 @@ part of user.model;
 
 class Education {
   final String id;
-  final String diplome;
-  final String ecole;
-  final DateTime debut;
-  final DateTime fin;
+  final String diploma;
+  final String? school;
+  final DateTime? begin;
+  final DateTime? end;
 
-  Education(this.id, this.diplome, this.ecole, this.debut, this.fin);
+  Education(this.id, this.diploma, this.school, this.begin, this.end);
 
-  
+  Map<String, dynamic> toJson() => {
+        '_id': id,
+        'diploma': diploma,
+        'school': school,
+        'begin': begin,
+        'end': end
+      };
+
+  factory Education.fromJson(Map<String, dynamic> json) => Education(
+      json['_id'], json['diploma'], json['school'], json['begin'], json['end']);
 }

@@ -27,6 +27,8 @@ enum SideNavigationIndex {
                   : Feather.log_out;
 
   void tapEvent(BuildContext context) => this == logout
-      ? debugPrint('logout Function')
+      ? AuthenticationBloc().add(LogoutUser())
       : context.read<SideNavigationBloc>().add(NavigateTo(this));
+
+
 }
