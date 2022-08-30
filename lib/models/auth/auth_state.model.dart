@@ -1,4 +1,4 @@
-part of models;
+part of authentication.model;
 
 enum AuthState {
   unAuthenticated,
@@ -9,5 +9,5 @@ enum AuthState {
       ? 'unAuthenticated'
       : this == authenticated
           ? 'Authenticated'
-          : '';
+          : 'UnKnown';
 }

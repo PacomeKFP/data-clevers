@@ -1,4 +1,7 @@
 import 'package:aptitudes/config/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../blocs/blocs.dart';
 import 'desktop_auth.dart';
 import 'mobile_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,21 +33,15 @@ class _AuthenticationScreenDisplayerState
     return Scaffold(
       body: Column(
         children: [
-          Align(
-              alignment: Alignment.topCenter,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      color: AppColors.blue,
-                      child: const Text(
-                        'Yo',
-                        style: TextStyle(fontSize: 50),
-                      ),
-                    )
-                  ],
-                ),
-              )),
+          BlocBuilder<AuthenticationBloc, AuthenticationState>(
+            builder: (context, state) {
+              AuthenticationInitial state_ = state as AuthenticationInitial;
+              return Text(
+                state_.authState.label,
+                style: GoogleFonts.poppins(fontSize: 24),
+              );
+            },
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,14 +1,17 @@
 part of auth.components;
 
 class RoundedPasswordInput extends StatelessWidget {
-  RoundedPasswordInput(
-      {Key? key, required this.hintText, required this.icon, this.compareTo})
+  const RoundedPasswordInput(
+      {Key? key,
+      required this.hintText,
+      required this.icon,
+      this.compareTo,
+      this.controller})
       : super(key: key);
   final IconData icon;
   final String hintText;
   final CompareTo? compareTo;
-  final TextEditingController? controller = TextEditingController();
-  
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-part of models;
+part of authentication.model;
 
 
 enum AuthMode {

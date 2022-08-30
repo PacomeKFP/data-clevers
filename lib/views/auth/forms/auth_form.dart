@@ -1,3 +1,4 @@
+import 'package:aptitudes/blocs/authentication/bloc/authentication_bloc.dart';
 import 'package:aptitudes/config/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,6 +44,9 @@ class _AuthFormState extends State<AuthForm>
     super.dispose();
   }
 
+  late final TextEditingController _emailController = TextEditingController();
+  late final TextEditingController _passwordController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,118 +63,129 @@ class _AuthFormState extends State<AuthForm>
             style: TextStyle(color: AppColors.amber, fontSize: 18),
           )
         : SingleChildScrollView(
-          controller: _scrollController,
-          child: Form(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (widget.cancelCallback != null)
-                  CancelButton(
-                      animationDuration: animationDuration * 4,
-                      isLogin: widget.authMode == AuthMode.none,
-                      onTap: widget.cancelCallback),
-                if (widget.cancelCallback != null)
-                  const Text('Welcome Back',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 24)),
-                if (widget.authMode == AuthMode.login &&
-                    widget.cancelCallback == null)
-                  const SizedBox(height: 40),
-                AnimatedOpacity(
-                  duration: animationDuration,
-                  opacity: widget.authMode == AuthMode.register ? 1 : 0,
-                  child: widget.authMode == AuthMode.register
-                      ? const RoundedInput(
-                          icon: Icons.face_rounded, hintText: 'Name')
-                      : null,
-                ),
-                AnimatedOpacity(
-                  duration: animationDuration,
-                  opacity: widget.authMode == AuthMode.register ? 1 : 0,
-                  child: widget.authMode == AuthMode.register
-                      ? const RoundedInput(
-                          icon: Icons.face_rounded, hintText: 'Username')
-                      : null,
-                ),
-                AnimatedOpacity(
-                  duration: animationDuration,
-                  opacity: widget.authMode == AuthMode.register ? 1 : 0,
-                  child: widget.authMode == AuthMode.register
-                      ? const RoundedInput(
-                          icon: Icons.mail, hintText: 'Email')
-                      : null,
-                ),
-          
-                AnimatedOpacity(
-                  duration: animationDuration,
-                  opacity: widget.authMode == AuthMode.login ? 1 : 0,
-                  child: widget.authMode == AuthMode.login
-                      ? const RoundedInput(
-                          icon: Icons.mail, hintText: 'Email or username')
-                      : null,
-                ),
-                
-                RoundedPasswordInput(icon: Icons.lock, hintText: 'Password'),
-                AnimatedOpacity(
-                  duration: animationDuration,
-                  opacity: widget.authMode == AuthMode.register ? 1 : 0,
-                  child: widget.authMode == AuthMode.register
-                      ? const RoundedInput(
-                          icon: Icons.lock,
-                          hintText: 'Re-enter your Password')
-                      : null,
-                ),
-                RoundedButton(
-                  txtColor: AppColors.white,
-                  title: widget.authMode.label,
-                  bgColor: AppColors.blue,
-                  tapEvent: () {},
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    SizedBox(
-                        width: 140,
-                        child: Divider(
-                          thickness: 1,
-                        )),
-                    Text(' OR '),
-                    SizedBox(
-                        width: 140,
-                        child: Divider(
-                          thickness: 1,
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 5),
-                //Socials Login
-                RoundedButton(
-                  txtColor: AppColors.white,
-                  title: 'Sign Up with GitHub',
-                  image: 'icons/github.png',
-                  bgColor: AppColors.black.withAlpha(127),
-                  tapEvent: () => print('Sign Up with Github'),
-                ),
-          
-                RoundedButton(
-                  txtColor: AppColors.blue,
-                  title: 'Sign Up with Google',
-                  image: 'icons/google.png',
-                  bgColor: AppColors.white,
-                  tapEvent: () => print("Sign Up with Google"),
-                ),
-                InkWell(
-                  onTap: widget.changeAuthMode,
-                  child: Text(
-                    widget.authMode.changeText,
-                    style: TextStyle(color: AppColors.amber, fontSize: 18),
+            controller: _scrollController,
+            child: Form(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (widget.cancelCallback != null)
+                    CancelButton(
+                        animationDuration: animationDuration * 4,
+                        isLogin: widget.authMode == AuthMode.none,
+                        onTap: widget.cancelCallback),
+                  if (widget.cancelCallback != null)
+                    const Text('Welcome Back',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24)),
+                  if (widget.authMode == AuthMode.login &&
+                      widget.cancelCallback == null)
+                    const SizedBox(height: 40),
+                  AnimatedOpacity(
+                    duration: animationDuration,
+                    opacity: widget.authMode == AuthMode.register ? 1 : 0,
+                    child: widget.authMode == AuthMode.register
+                        ? const RoundedInput(
+                            icon: Icons.face_rounded, hintText: 'Name')
+                        : null,
                   ),
-                )
-              ],
+                  AnimatedOpacity(
+                    duration: animationDuration,
+                    opacity: widget.authMode == AuthMode.register ? 1 : 0,
+                    child: widget.authMode == AuthMode.register
+                        ? const RoundedInput(
+                            icon: Icons.face_rounded, hintText: 'Username')
+                        : null,
+                  ),
+                  AnimatedOpacity(
+                    duration: animationDuration,
+                    opacity: widget.authMode == AuthMode.register ? 1 : 0,
+                    child: widget.authMode == AuthMode.register
+                        ?  RoundedInput(
+                          controller : _emailController,
+                            icon: Icons.mail, hintText: 'Email')
+                        : null,
+                  ),
+
+                  AnimatedOpacity(
+                    duration: animationDuration,
+                    opacity: widget.authMode == AuthMode.login ? 1 : 0,
+                    child: widget.authMode == AuthMode.login
+                        ? RoundedInput(
+                          controller: _passwordController,
+                            icon: Icons.mail, hintText: 'Email or username')
+                        : null,
+                  ),
+
+                  RoundedPasswordInput(icon: Icons.lock, hintText: 'Password'),
+                  AnimatedOpacity(
+                    duration: animationDuration,
+                    opacity: widget.authMode == AuthMode.register ? 1 : 0,
+                    child: widget.authMode == AuthMode.register
+                        ? const RoundedInput(
+                            icon: Icons.lock,
+                            hintText: 'Re-enter your Password')
+                        : null,
+                  ),
+                  RoundedButton(
+                      txtColor: AppColors.white,
+                      title: widget.authMode.label,
+                      bgColor: AppColors.blue,
+                      tapEvent: () => AuthenticationBloc().add(AuthenticateUser(
+                              authMode: widget.authMode,
+                              authMethod: AuthMethod.emailPassword,
+                              credentials: {
+                                'email': _emailController.text,
+                                'password': _passwordController.text
+                              }))),
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      SizedBox(
+                          width: 140,
+                          child: Divider(
+                            thickness: 1,
+                          )),
+                      Text(' OR '),
+                      SizedBox(
+                          width: 140,
+                          child: Divider(
+                            thickness: 1,
+                          ))
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  //Socials Login
+                  RoundedButton(
+                    txtColor: AppColors.white,
+                    title: 'Sign Up with GitHub',
+                    image: 'icons/github.png',
+                    bgColor: AppColors.black.withAlpha(127),
+                    tapEvent: () {AuthenticationBloc().add(AuthenticateUser(
+                        authMode: AuthMode.none,
+                        authMethod: AuthMethod.github));},
+                  ),
+
+                  RoundedButton(
+                    txtColor: AppColors.blue,
+                    title: 'Sign Up with Google',
+                    image: 'icons/google.png',
+                    bgColor: AppColors.white,
+                    tapEvent: () => AuthenticationBloc().add(AuthenticateUser(
+                        authMode: AuthMode.none,
+                        authMethod: AuthMethod.google)),
+                  ),
+                  InkWell(
+                    onTap: widget.changeAuthMode,
+                    child: Text(
+                      widget.authMode.changeText,
+                      style: TextStyle(color: AppColors.amber, fontSize: 18),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        );
+          );
   }
 }

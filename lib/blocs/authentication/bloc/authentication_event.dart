@@ -6,8 +6,8 @@ class InitAuthentication extends AuthenticationEvent {}
 class AuthenticateUser extends AuthenticationEvent{
   final AuthMode authMode;
   final AuthMethod authMethod;
-  final Map<String, String> credentials;
+  final Map<String, String>? credentials;
 
-  AuthenticateUser(this.authMode, this.authMethod, this.credentials);
+  AuthenticateUser({required this.authMode, required this.authMethod, this.credentials});
 }
 class LogoutUser extends AuthenticationEvent{}
