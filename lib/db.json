@@ -1,0 +1,63 @@
+{
+  "users": {
+    "Prenom": "",
+    "Nom": "",
+    "Email": "",
+    "MotdePass": "",
+    "nomUtilisateur": "",
+    "Biographie": "",
+    "CentreInteret": [],
+    "Langue": {
+      "designation": "",
+      "Niveau": ""
+    },
+
+    "Education": {
+      "Diplome": "",
+      "Domaine": "",
+      "Ecole": "",
+      "DateDebut": "",
+      "DateFin": ""
+    },
+    "Experience": {
+      "Titre": "",
+      "Employeur": "",
+      "UrlEmployeur": "",
+      "ContactEmployeur": "",
+      "Domaine": "",
+      "DateDebut": "",
+      "DateFin": ""
+    },
+    "Certificat": {
+      "NomCertificat": "",
+      "domain": "",
+      "Emetteur": "",
+      "Date": ""
+    },
+    "Competences": {
+      "Titre": "",
+      "Domaine": ""
+    },
+    "*******socials": {
+      "facebook": "",
+      "github": "",
+      "linkedin": "",
+      "twitter": ""
+    },
+    "*****availableForEmployment": true
+  }
+}
+/* About Socials: 
+ they will be dynamic, user will be able to add a new social, (like facebook, twitter, insta) and the value....
+ but to wmake it correct we have to contitute a list of socials and wwe will propose to the user to chose
+  a new social and add a value to it;
+
+ */
+
+ /* Available for employment:
+ 
+ If it is on true, we will send a notification to the user when a job will be good for her
+  
+
+ 
+ */

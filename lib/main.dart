@@ -1,4 +1,5 @@
 import 'package:aptitudes/views/auth/app.dart';
+import 'package:aptitudes/views/offline/offline.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.roboto().fontFamily,
           primarySwatch: Colors.blue,
         ),
-        home: const AuthenticationScreenDisplayer(),
+        home:  OutHomePage(),
       ),
     );
   }

@@ -9,5 +9,6 @@ class AuthenticateUser extends AuthenticationEvent{
   final Map<String, String>? credentials;
 
   AuthenticateUser({required this.authMode, required this.authMethod, this.credentials});
+  
 }
 class LogoutUser extends AuthenticationEvent{}

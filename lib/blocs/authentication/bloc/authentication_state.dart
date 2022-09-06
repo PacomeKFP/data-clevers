@@ -6,7 +6,7 @@ abstract class AuthenticationState {}
 class AuthenticationInitial extends AuthenticationState {
   final AuthMode authMode;
   final AuthState authState;
-  final User? currentUser;
+  final UserModel? currentUser;
 
   AuthenticationInitial(
       {this.authMode = AuthMode.none,

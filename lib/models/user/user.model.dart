@@ -8,9 +8,9 @@ part 'objects/education.dart';
 part 'objects/experience.dart';
 part 'objects/certificate.dart';
 part 'objects/competence.dart';
-
-class User {
+class UserModel {
   final String id;
+  final String uid;
   final String name;
   final String userName;
   final String email;
@@ -23,8 +23,9 @@ class User {
   final List<Certificate>? certificates;
   final List<Competence>? competences;
 
-  User._(
+  UserModel._(
       {required this.id,
+      required this.uid,
       required this.name,
       required this.userName,
       required this.email,
@@ -37,9 +38,9 @@ class User {
       this.certificates,
       this.competences});
 
-
   Map<String, dynamic> toJson() => {
         '_id': id,
+        'uid':uid,
         'name': name,
         'userName': userName,
         'email': email,
@@ -56,35 +57,28 @@ class User {
         'competences':
             competences!.map((competence) => competence.toJson()).toList(),
       };
-  factory User.fromJson(Map<String, dynamic> json) =>
-     User._(
-        id: json['_id'],
-        name: json['name'],
-        userName: json['userName'],
-        email: json['email'],
-        password: json['password'],
-        biography: json['biography'],
-        interests: json['interests'],
-        languages: (json['languages'] as List<Map<String, dynamic>>)
-            .map<Language>((language) => Language.fromJson(language))
-            .toList(),
-        educations: (json['educations'] as List<Map<String, dynamic>>)
-            .map<Education>((education) => Education.fromJson(education))
-            .toList(),
-        experiences: (json['experiences'] as List<Map<String, dynamic>>)
-            .map<Experience>((experience) => Experience.fromJson(experience))
-            .toList(),
-        certificates: (json['certificates'] as List<Map<String, dynamic>>)
-            .map<Certificate>(
-                (certificate) => Certificate.fromJson(certificate))
-            .toList(),
-        competences: (json['competences'] as List<Map<String, dynamic>>)
-            .map<Competence>((competence) => Competence.fromJson(competence))
-            .toList());
-  
-
-  Future<void> saveInPrefs() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('currentUser', json.encode(toJson()));
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel._(
+      id: json['_id'],
+      name: json['name'],
+      uid: json['uid'],
+      userName: json['userName'],
+      email: json['email'],
+      password: json['password'],
+      biography: json['biography'],
+      interests: json['interests'],
+      languages: (json['languages'] as List<Map<String, dynamic>>)
+          .map<Language>((language) => Language.fromJson(language))
+          .toList(),
+      educations: (json['educations'] as List<Map<String, dynamic>>)
+          .map<Education>((education) => Education.fromJson(education))
+          .toList(),
+      experiences: (json['experiences'] as List<Map<String, dynamic>>)
+          .map<Experience>((experience) => Experience.fromJson(experience))
+          .toList(),
+      certificates: (json['certificates'] as List<Map<String, dynamic>>)
+          .map<Certificate>((certificate) => Certificate.fromJson(certificate))
+          .toList(),
+      competences: (json['competences'] as List<Map<String, dynamic>>)
+          .map<Competence>((competence) => Competence.fromJson(competence))
+          .toList());
 }

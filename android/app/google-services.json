@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "509724216292",
+    "project_id": "dataclevers01",
+    "storage_bucket": "dataclevers01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509724216292:android:0f92e8195f1397fab715f1",
+        "android_client_info": {
+          "package_name": "com.example.aptitudes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2gum5zItfQWRg0e2NTX3xnZ_IhqatreE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509724216292-4b92sfqabrm4sov1ugsuitmi44qhoae9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509724216292-arhls46m4vp7mm4av2nlra4r2g425cnm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.aptitudes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

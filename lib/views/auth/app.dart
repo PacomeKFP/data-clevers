@@ -1,4 +1,5 @@
 import 'package:aptitudes/config/colors.dart';
+import 'package:aptitudes/views/home/home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../blocs/blocs.dart';
@@ -33,6 +34,10 @@ class _AuthenticationScreenDisplayerState
     return Scaffold(
       body: Column(
         children: [
+          TextButton(
+              onPressed: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => UserHome())),
+              child: Text('Home')),
           BlocBuilder<AuthenticationBloc, AuthenticationState>(
             builder: (context, state) {
               AuthenticationInitial state_ = state as AuthenticationInitial;
