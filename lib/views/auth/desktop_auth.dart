@@ -1,4 +1,3 @@
-
 import '../../models/models.dart';
 import 'forms/auth_form.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,6 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen>
         AnimationController(vsync: this, duration: animationDuration);
   }
 
-
   @override
   void dispose() {
     animationController.dispose();
@@ -41,11 +39,10 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * 2 / 3;
     return AlertDialog(
-      backgroundColor:AppColors.softBlue,
-      // contentPadding: EdgeInsets.all(0),
+      actions: [CloseButton(color: AppColors.purple ,onPressed: () => Navigator.of(context).pop())],
+      backgroundColor: AppColors.softBlue,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30))),
-      // actions: [],
       content: Container(
         alignment: Alignment.center,
         width: width,
@@ -55,12 +52,11 @@ class _DesktopAuthScreenState extends State<DesktopAuthScreen>
             Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all( Radius.circular(30)),
-                  
-                ),
-                width: double.infinity,
-              ),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  ),
+                  width: double.infinity,
+                  child: Image.asset("gifs/authenticate.gif", height: 600)),
             ),
             const SizedBox(width: 5),
             Expanded(

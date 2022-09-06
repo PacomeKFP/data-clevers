@@ -32,6 +32,8 @@ class OutNavBar extends StatelessWidget {
 
             NavLoginButton(
               tapCallback: () => showDialog(
+                barrierDismissible: false,
+                routeSettings: RouteSettings(name:'/Authentication'),
                   context: context, builder: (context) => DesktopAuthScreen()),
             ), //go to Quiz
             const SizedBox(width: 10),

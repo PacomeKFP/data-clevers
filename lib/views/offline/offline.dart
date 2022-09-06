@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:aptitudes/config/colors.dart';
+
+import 'components/testimonials/testimonials.dart';
 import 'components/nav/nav.dart';
 import 'components/training_slider/src/hero.dart';
 import 'components/training_slider/training_slider.dart';
 import 'components/popular_courses/popular_courses.dart';
-import 'package:flutter/material.dart';
 
 import 'components/discover_potential/potential.dart';
 
@@ -11,7 +13,7 @@ class OutHomePage extends StatelessWidget {
   OutHomePage({Key? key}) : super(key: key);
 
   final List<GlobalKey> keys =
-      List<GlobalKey>.generate(3, (index) => GlobalKey());
+      List<GlobalKey>.generate(4, (index) => GlobalKey());
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,10 @@ class OutHomePage extends StatelessWidget {
 
               ///TODO : here we have to displaytestimonials about our solutions
               ///
-              ///
+              Container(
+                  height: size.height,
+                  alignment: Alignment.center,
+                  child: TestimonialsAboutUs(key: keys[3])),
             ]),
           ),
         ));

@@ -10,9 +10,9 @@ class AppGlobals {
           fontWeight: FontWeight.w900,
           color: AppColors.darkBlue,
           backgroundColor: AppColors.white));
-  static Widget appName() => Text(
+  static Widget appName({double? fontSize})=> Text(
         "DataClevers",
-        style: GoogleFonts.poppins(fontSize: 16),
+        style: GoogleFonts.poppins(fontSize: fontSize ?? 24),
       );
   AppGlobals._();
 }
