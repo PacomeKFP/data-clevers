@@ -14,24 +14,6 @@ class _DashboardState extends State<Dashboard> {
     ScrollController _firstScrollController = ScrollController();
     Size size = MediaQuery.of(context).size;
 
-    TrainingTabIndex _trainingTab = TrainingTabIndex.current;
-    String a = "sdf";
-    void _changeTab(TrainingTabIndex selectedTab) {
-      print('yo');
-      setState(() {
-        _trainingTab = selectedTab;
-        a = "selectedTab.label";
-        print(a);
-      });
-      print(_trainingTab.label);
-    }
-
-    void test() {
-      setState(() {
-        a = "chien";
-      });
-    }
-
     return Expanded(
       flex: 4,
       child: Container(
@@ -45,7 +27,11 @@ class _DashboardState extends State<Dashboard> {
               margin: const EdgeInsets.only(left: 30, top: 25, bottom: 15),
               child: InkWell(
                 onTap: () {
-                  showDialog(context: context, builder: (context)=>AlertDialog(content: Text('yo'),));
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            content: Text('yo'),
+                          ));
                 },
                 child: Text(
                   "Ongoing Trainings",
@@ -57,7 +43,7 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             TrainingTabs(),
-            
+
             Container(
               // padding: const EdgeInsets.symmetric(horizontal: 10.0),
               height: 225,
@@ -125,29 +111,9 @@ class _DashboardState extends State<Dashboard> {
               instructor: 'The Instructor',
               progression: 0.50,
             ),
-
-            // const SharedFilesItem(
-            //   color: Colors.amber,
-            //   sharedFileName: "Company Policy",
-            //   membersNumber: 38,
-            //   date: "10 Sep. 2022",
-            //   fileSize: "4.2 MB",
-            // ),
-            // const SharedFilesItem(
-            //   color: Colors.red,
-            //   sharedFileName: "Wireframes",
-            //   membersNumber: 14,
-            //   date: "01 Oct. 2022",
-            //   fileSize: "1.7 MB",
-            // ),
-
-            //Projects Statistics
-            const SubHeader(title: "Project Statistics"),
-            const TrainingStatisticsCards(),
           ]),
         ),
       ),
     );
   }
 }
-

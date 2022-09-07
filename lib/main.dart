@@ -1,3 +1,4 @@
+import 'package:aptitudes/blocs/app/bloc/app_globals_bloc.dart';
 import 'package:aptitudes/views/auth/app.dart';
 import 'package:aptitudes/views/offline/offline.dart';
 import 'package:flutter/gestures.dart';
@@ -37,23 +38,34 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        ///managing languages and app theme
+        BlocProvider<AppGlobalsBloc>(create: (context) => AppGlobalsBloc()),
+
+        ///Mananing authentication
         BlocProvider<AuthenticationBloc>(
             create: (context) => AuthenticationBloc()),
+
         BlocProvider<TabToggleBloc>(create: (context) => TabToggleBloc()),
         BlocProvider<SideNavigationBloc>(
             create: (context) => SideNavigationBloc())
       ],
-      child: MaterialApp(
-        scrollBehavior: MyCustomScrollBehavior(),
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        title: 'DataClevers',
-        theme: ThemeData(
-          textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
-          fontFamily: GoogleFonts.roboto().fontFamily,
-          primarySwatch: Colors.blue,
-        ),
-        home: Quiz(),
+      child: BlocBuilder<AppGlobalsBloc, AppGlobalsState>(
+        builder: (context, state) {
+          return MaterialApp(
+            scrollBehavior: MyCustomScrollBehavior(),
+            debugShowCheckedModeBanner: false,
+            initialRoute: '/',
+            title: 'DataClevers',
+            theme: ThemeData(
+              brightness: (state as AppGlobalsInitial).theme,
+              textTheme:
+                  GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
+              fontFamily: GoogleFonts.roboto().fontFamily,
+              primarySwatch: Colors.blue,
+            ),
+            home: Quiz(),
+          );
+        },
       ),
     );
   }

@@ -63,13 +63,17 @@ class _QuizState extends State<Quiz> {
             quizModel: quizModel,
             index: currentQuestionIndex + 1,
             onSubmit: (List<String> choices, int elapsedTime) {
-
               var userAnswerModel = UserAnswerModel(
                   questionId: quizQuestions[currentQuestionIndex].id!,
                   choices: choices,
                   elapsedTime: elapsedTime);
-              
-              userAnswers.add(userAnswerModel);
+              userAnswers
+                      .where((element) =>
+                          element.questionId == userAnswerModel.questionId)
+                      .toList()
+                      .isEmpty
+                  ? userAnswers.add(userAnswerModel)
+                  : log("Response already submitted");
 
               log("Question submitted ${elapsedTime.toString()}");
               print(userAnswers.toString());

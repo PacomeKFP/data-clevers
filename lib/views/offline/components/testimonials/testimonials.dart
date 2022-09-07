@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:aptitudes/config/colors.dart';
-import 'package:aptitudes/config/logo.dart';
+import 'package:aptitudes/config/app.dart';
 import 'package:faker_dart/faker_dart.dart';
 import 'src/testimonial.dart';
 import 'package:flutter/material.dart';

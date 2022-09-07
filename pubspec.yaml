@@ -44,7 +44,6 @@ dependencies:
   google_sign_in: ^5.4.1
   iconpacks: ^0.0.3
   infinite_carousel: ^1.0.2
-  mongo_dart: ^0.7.4+1
   neon_circular_timer: ^0.0.7
   percent_indicator: ^4.2.2
   shared_preferences: ^2.0.15

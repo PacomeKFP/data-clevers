@@ -1,4 +1,4 @@
-import 'package:aptitudes/config/logo.dart';
+import 'package:aptitudes/config/app.dart';
 import 'package:aptitudes/views/auth/desktop_auth.dart';
 import 'src/get_started_button.dart';
 import 'src/item.dart';

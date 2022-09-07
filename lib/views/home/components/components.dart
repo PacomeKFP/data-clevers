@@ -3,6 +3,7 @@ library home.components;
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:aptitudes/blocs/sideNavigation/side_navigation_bloc.dart';
 import 'package:aptitudes/config/colors.dart';
+import 'package:aptitudes/config/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -22,8 +23,6 @@ part 'dashboard/dashboard.dart';
 part 'dashboard/src/tabs.dart';
 part 'dashboard/src/TrainingProgressCard.dart';
 part 'dashboard/src/subHeader.dart';
-part 'dashboard/src/sharedFilesItem.dart';
-part 'dashboard/src/trainingStatisticCard.dart';
 part 'dashboard/src/CourseLineItem.dart';
 
 

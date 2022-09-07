@@ -20,10 +20,14 @@ class _CompanyNameState extends State<CompanyName> {
           fontWeight: FontWeight.w700,
           color: AppColors.softBlue,
           fontSize: 18.0)
-    ]; 
+    ];
     return SizedBox(
       height: 70.0,
-      child: Center(child: Text('DC', style: textStyles[1])),
+      child: Center(
+          child: AppGlobals.appName(
+              bgColor: AppColors.darkBlue,
+              lblColor: AppColors.white,
+              fontSize: widget.isCollapsed ? 42 : 24)),
     );
   }
 }
