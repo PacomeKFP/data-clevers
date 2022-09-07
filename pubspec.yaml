@@ -45,6 +45,7 @@ dependencies:
   iconpacks: ^0.0.3
   infinite_carousel: ^1.0.2
   mongo_dart: ^0.7.4+1
+  neon_circular_timer: ^0.0.7
   percent_indicator: ^4.2.2
   shared_preferences: ^2.0.15
 
@@ -78,6 +79,7 @@ flutter:
     - assets/gifs/authenticate.gif
     - assets/gifs/cube.gif
     - assets/gifs/nativeteam.gif
+    - assets/gifs/python.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

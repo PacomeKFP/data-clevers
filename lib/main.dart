@@ -10,6 +10,8 @@ import 'views/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'views/quiz/quiz.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -51,7 +53,7 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.roboto().fontFamily,
           primarySwatch: Colors.blue,
         ),
-        home: OutHomePage(),
+        home: Quiz(),
       ),
     );
   }
