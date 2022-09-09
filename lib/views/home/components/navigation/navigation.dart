@@ -14,7 +14,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       builder: (context, state) {
         SideNavigationInitial state_ = state as SideNavigationInitial;
         bool isCollapsed = state_.isCollapsed;
-        double _sideWidth = isCollapsed ? 100 : 175;
+        double _sideWidth = isCollapsed ? 100 : 200;
         return Container(
           color: AppColors.softBlue,
           child: Stack(

@@ -11,3 +11,7 @@ class HoverTab extends TabToggleEvent {
   final TrainingTabIndex index;
   HoverTab(this.index);
 }
+class ChangeProfileTab extends TabToggleEvent {
+  final ProfileTabIndex index;
+  ChangeProfileTab(this.index);
+}

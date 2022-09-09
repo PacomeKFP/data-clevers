@@ -1,5 +1,12 @@
+import 'package:aptitudes/blocs/blocs.dart';
 import 'package:aptitudes/config/colors.dart';
+import 'package:aptitudes/models/models.dart';
+import 'package:aptitudes/views/home/components/settings/src/jobs_settings.dart';
+import 'package:aptitudes/views/home/components/settings/src/lang_settings.dart';
+import 'package:aptitudes/views/home/components/settings/src/notifications_settings.dart';
+import 'package:aptitudes/views/home/components/settings/src/theme_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer';
 
@@ -25,14 +32,19 @@ class _AppSettingsState extends State<AppSettings> {
         Radius.circular(60),
       )),
       actions: [
-        ElevatedButton(
-          
-            onPressed: () => log('Close Settings'),
-            child: Text('Close Settings'))
+        CloseButton(onPressed: () {
+          context
+              .read<SideNavigationBloc>()
+              .add(NavigateTo(SideNavigationIndex.dashboard));
+          Navigator.of(context).pop();
+        })
       ],
       content: Column(
-        children: [
-          Row()
+        children: const [
+          LanguageSetting(),
+          ThemeSettings(),
+          NotificationSetting(),
+          JobSetting()
         ],
       ),
     );

@@ -7,9 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer';  
 
 class QuizInstructions extends StatelessWidget {
-  const QuizInstructions({Key? key, required this.quizModel}) : super(key: key);
+  const QuizInstructions({Key? key, required this.quizModel,required this.onStart}) : super(key: key);
 
   final QuizModel quizModel;
+  final GestureTapCallback onStart;
 
   @override
   Widget build(BuildContext context) {

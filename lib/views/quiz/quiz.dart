@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:aptitudes/models/models.dart';
+import 'components/instructions/instructions.dart';
 import 'package:faker_dart/faker_dart.dart';
 import 'components/question/question.dart';
 import 'package:flutter/material.dart';
+import '../home/home.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({Key? key}) : super(key: key);
@@ -51,7 +53,7 @@ class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
+    bool isInstructing = true;
     return Scaffold(
       body: Container(
         // width: size.width,
@@ -59,29 +61,40 @@ class _QuizState extends State<Quiz> {
         padding: EdgeInsets.symmetric(horizontal: 30),
         alignment: Alignment.center,
         child: SingleChildScrollView(
-          child: QuizQuestion(
-            quizModel: quizModel,
-            index: currentQuestionIndex + 1,
-            onSubmit: (List<String> choices, int elapsedTime) {
-              var userAnswerModel = UserAnswerModel(
-                  questionId: quizQuestions[currentQuestionIndex].id!,
-                  choices: choices,
-                  elapsedTime: elapsedTime);
-              userAnswers
-                      .where((element) =>
-                          element.questionId == userAnswerModel.questionId)
-                      .toList()
-                      .isEmpty
-                  ? userAnswers.add(userAnswerModel)
-                  : log("Response already submitted");
-
-              log("Question submitted ${elapsedTime.toString()}");
-              print(userAnswers.toString());
-            },
-            question: quizQuestions[currentQuestionIndex],
-          ),
+          child: isInstructing
+              ? QuizInstructions(
+                  quizModel: quizModel,
+                  onStart: () => setState(() {
+                        isInstructing = false;
+                      }))
+              : quizQuestion(context),
         ),
       ),
     );
   }
+
+  quizQuestion(context) => QuizQuestion(
+        quizModel: quizModel,
+        index: currentQuestionIndex + 1,
+        onSubmit: (List<String> choices, int elapsedTime) {
+          var userAnswerModel = UserAnswerModel(
+              questionId: quizQuestions[currentQuestionIndex].id!,
+              choices: choices,
+              elapsedTime: elapsedTime);
+          userAnswers
+                  .where((element) =>
+                      element.questionId == userAnswerModel.questionId)
+                  .toList()
+                  .isEmpty
+              ? userAnswers.add(userAnswerModel)
+              : log("Response already submitted");
+
+          log("Question submitted ${elapsedTime.toString()}");
+          print(userAnswers.toString());
+
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => UserHome()));
+        },
+        question: quizQuestions[currentQuestionIndex],
+      );
 }

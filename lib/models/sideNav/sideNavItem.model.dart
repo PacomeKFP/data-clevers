@@ -48,7 +48,24 @@ enum SideNavigationIndex {
                                   ? Feather.settings
                                   : Feather.log_out;
 
-  void tapEvent(BuildContext context) => this == logout
-      ? AuthenticationBloc().add(LogoutUser())
-      : context.read<SideNavigationBloc>().add(NavigateTo(this));
+  void tapEvent(BuildContext context) {
+    switch (this) {
+      case logout:
+        return logOut(context);
+      case setting:
+        showDialog(
+            context: context,
+            builder: (context) => AppSettings(),
+            routeSettings: RouteSettings(
+                name: '${ModalRoute.of(context)!.settings.name}/appSettings'));
+        return;
+      default:
+        return context.read<SideNavigationBloc>().add(NavigateTo(this));
+    }
+  }
+}
+
+void logOut(context) {
+  AuthenticationBloc().add(LogoutUser());
+  Navigator.pushNamed(context, '/');
 }

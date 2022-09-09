@@ -15,7 +15,6 @@ class _DashboardState extends State<Dashboard> {
     Size size = MediaQuery.of(context).size;
 
     return Expanded(
-      flex: 4,
       child: Container(
         height: size.height,
         color: AppColors.softBlue,
@@ -23,24 +22,16 @@ class _DashboardState extends State<Dashboard> {
           controller: _firstScrollController,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                ProfileHeaderUser(),
             Container(
               margin: const EdgeInsets.only(left: 30, top: 25, bottom: 15),
-              child: InkWell(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                            content: Text('yo'),
-                          ));
-                },
-                child: Text(
+              child: Text(
                   "Ongoing Trainings",
                   style: GoogleFonts.quicksand(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
-              ),
             ),
             TrainingTabs(),
 
@@ -96,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
             ),
 
             //Project Files
-            const SubHeader(title: "Shared Files"),
+            const SubHeader(title: "Training Content"),
             const CourseLineItem(
               color: Colors.blue,
               title: "Python for DataScience",

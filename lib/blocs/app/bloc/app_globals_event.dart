@@ -9,8 +9,9 @@ class SwitchLanguage extends AppGlobalsEvent{
 
   SwitchLanguage(this.newLang);
 }
-class SwitchTheme extends AppGlobalsEvent{
+
+class SwitchAppTheme extends AppGlobalsEvent{
   final Brightness newTheme;
 
-  SwitchTheme(this.newTheme);
+  SwitchAppTheme(this.newTheme);
 }

@@ -4,6 +4,7 @@ import 'components/components.dart';
 
 class UserHome extends StatelessWidget {
   const UserHome({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class UserHome extends StatelessWidget {
         child: Row(
           children: [
             CustomNavigationBar(),//will be replaced by a bottomnav on mobile
-            Column(
-              children: [
+            // Column(
+            //   children: [
                 /**Here we will add a little nav, it will contain :
                  * 
                  * The Drawer iconButton that will allow to sho or hide the sidenav
@@ -27,8 +28,8 @@ class UserHome extends StatelessWidget {
                  * 
                  */
                 Dashboard(),
-              ],
-            ),
+              // ],
+            // ),
           ],
         ),
       ),

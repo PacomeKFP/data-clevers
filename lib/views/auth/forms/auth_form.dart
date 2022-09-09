@@ -1,7 +1,12 @@
 import 'package:aptitudes/blocs/authentication/bloc/authentication_bloc.dart';
+import 'package:aptitudes/blocs/blocs.dart';
 import 'package:aptitudes/config/colors.dart';
+import 'package:aptitudes/services/services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../models/models.dart';
 import '../components/components.dart';
@@ -101,9 +106,10 @@ class _AuthFormState extends State<AuthForm>
                     duration: animationDuration,
                     opacity: widget.authMode == AuthMode.register ? 1 : 0,
                     child: widget.authMode == AuthMode.register
-                        ?  RoundedInput(
-                          controller : _emailController,
-                            icon: Icons.mail, hintText: 'Email')
+                        ? RoundedInput(
+                            controller: _emailController,
+                            icon: Icons.mail,
+                            hintText: 'Email')
                         : null,
                   ),
 
@@ -112,8 +118,9 @@ class _AuthFormState extends State<AuthForm>
                     opacity: widget.authMode == AuthMode.login ? 1 : 0,
                     child: widget.authMode == AuthMode.login
                         ? RoundedInput(
-                          controller: _passwordController,
-                            icon: Icons.mail, hintText: 'Email or username')
+                            controller: _passwordController,
+                            icon: Icons.mail,
+                            hintText: 'Email or username')
                         : null,
                   ),
 
@@ -162,9 +169,30 @@ class _AuthFormState extends State<AuthForm>
                     title: 'Sign Up with GitHub',
                     image: 'icons/github.png',
                     bgColor: AppColors.black.withAlpha(127),
-                    tapEvent: () {AuthenticationBloc().add(AuthenticateUser(
-                        authMode: AuthMode.none,
-                        authMethod: AuthMethod.github));},
+                    tapEvent: () async {
+                      AuthenticationBloc().add(AuthenticateUser(
+                          authMode: AuthMode.none,
+                          authMethod: AuthMethod.github));
+
+                      FirebaseAuth.instance.userChanges().listen((user) {
+                        // context
+                        //     .read<SideNavigationBloc>()
+                        //     .add(NavigateTo(SideNavigationIndex.profile));
+                        makeToast(
+                            msg: "User Successfull Logged in With github",
+                            type: 'debug',
+                            context: context);
+                        Navigator.pushNamed(context, '/home');
+                      },
+                          onError: (e) => makeToast(
+                              msg: "Error Occured when in authentication",
+                              type: 'alert',
+                              context: context),
+                          onDone: () => makeToast(
+                              msg: "User Successfull Logged in With Github",
+                              type: 'debug',
+                              context: context));
+                    },
                   ),
 
                   RoundedButton(
@@ -172,9 +200,32 @@ class _AuthFormState extends State<AuthForm>
                     title: 'Sign Up with Google',
                     image: 'icons/google.png',
                     bgColor: AppColors.white,
-                    tapEvent: () => AuthenticationBloc().add(AuthenticateUser(
-                        authMode: AuthMode.none,
-                        authMethod: AuthMethod.google)),
+                    tapEvent: () {
+                      AuthenticationBloc().add(AuthenticateUser(
+                          authMode: AuthMode.none,
+                          authMethod: AuthMethod.google));
+
+                      FirebaseAuth.instance.userChanges().listen((user) {
+                        // context
+                        //     .read<SideNavigationBloc>()
+                        //     .add(NavigateTo(SideNavigationIndex.profile));
+                        makeToast(
+                            msg: "User Successfull Logged in With Google",
+                            type: 'debug',
+                            context: context);
+                        Navigator.pushNamed(context, '/home',
+                            arguments: {'user', user!});
+                      },
+                          onError: (e) => makeToast(
+                              msg:
+                                  "Error Occured when in authentication, please Check your network cnnexion and retry",
+                              type: 'alert',
+                              context: context),
+                          onDone: () => makeToast(
+                              msg: "User Successfull Logged in With Google",
+                              type: 'debug',
+                              context: context));
+                    },
                   ),
                   InkWell(
                     onTap: widget.changeAuthMode,

@@ -11,23 +11,19 @@ class CompanyName extends StatefulWidget {
 class _CompanyNameState extends State<CompanyName> {
   @override
   Widget build(BuildContext context) {
-    List<TextStyle> textStyles = [
-      TextStyle(
-          fontWeight: FontWeight.w400,
-          color: AppColors.softBlue,
-          fontSize: 16.0),
-      TextStyle(
-          fontWeight: FontWeight.w700,
-          color: AppColors.softBlue,
-          fontSize: 18.0)
-    ];
+
     return SizedBox(
       height: 70.0,
       child: Center(
-          child: AppGlobals.appName(
-              bgColor: AppColors.darkBlue,
-              lblColor: AppColors.white,
-              fontSize: widget.isCollapsed ? 42 : 24)),
+          child: widget.isCollapsed
+              ? AppGlobals.logo(
+                  bgColor: AppColors.darkBlue,
+                  lblColor: AppColors.white,
+                )
+              : AppGlobals.appName(
+                  bgColor: AppColors.darkBlue,
+                  lblColor: AppColors.white,
+                  fontSize: 24)),
     );
   }
 }

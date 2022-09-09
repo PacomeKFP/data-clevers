@@ -9,23 +9,38 @@ class QuestionHeader extends StatelessWidget {
       {Key? key,
       required this.quizModel,
       required this.questionModel,
-      required this.neonController})
+      required this.neonController,
+      required this.index,
+      required this.onComplete})
       : super(key: key);
 
   final QuizModel quizModel;
   final QuestionModel questionModel;
   final CountDownController neonController;
+  final int index;
+  final void Function() onComplete;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    List<Color> gradientColors = List<Color>.generate(
-        9, (index) => AppColors.purple.withOpacity(index / 10 + 0.1)).toList();
+    List<Color> gradientColors = [
+      Colors.greenAccent,
+      Colors.lightGreen,
+      Colors.lightGreen,
+      Colors.amberAccent,
+      Colors.amber,
+      Colors.redAccent,
+      Colors.red
+    ];
+
+    gradientColors = gradientColors.reversed.toList();
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Container(
+          width: size.width * 2 / 6,
           decoration: BoxDecoration(
+            color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(30)),
               boxShadow: [
                 BoxShadow(
@@ -34,29 +49,40 @@ class QuestionHeader extends StatelessWidget {
                   spreadRadius: 0,
                 )
               ]),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(30)),
-            child: Image.network(quizModel.imageUrl,
-                width: size.width * 2 / 6, fit: BoxFit.fill),
+          child: Column(
+            children: [
+              Text("Question: $index/10",
+                  style: GoogleFonts.poppins(
+                      fontSize: 23,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.darkBlue.withOpacity(0.8))),
+              const SizedBox(height: 10),
+              Text(questionModel.question,
+                  style: GoogleFonts.poppins(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w300,
+                      color: AppColors.darkBlue.withOpacity(0.6)))
+            ],
           ),
         ),
-        Container(
+        SizedBox(
           // margin: EdgeInsets.only(left:size.width * 0.5 / 6),
-          width: size.width * 3 / 6,
+          width: 100,
           child: NeonCircularTimer(
               width: size.width * 2 / 6,
               duration: questionModel.time,
               controller: neonController,
+              onComplete: onComplete,
               strokeWidth: 10,
               isTimerTextShown: true,
               neumorphicEffect: true,
-              outerStrokeColor: Colors.grey.shade100,
+              // outerStrokeColor: Colors.grey.shade100,
               innerFillGradient: LinearGradient(colors: gradientColors),
               neonGradient: LinearGradient(colors: gradientColors),
               strokeCap: StrokeCap.round,
               innerFillColor: Colors.black12,
-              backgroudColor: Colors.grey.shade100,
-              neonColor: Colors.purpleAccent),
+              backgroudColor: AppColors.softBlue,
+              neonColor: Colors.blue),
         )
       ],
     );

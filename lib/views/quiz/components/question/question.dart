@@ -19,7 +19,7 @@ class QuizQuestion extends StatefulWidget {
   final QuizModel quizModel;
   final int index;
   final QuestionModel question;
-  final void Function(List<String> choices,  int elapsedTime) onSubmit;
+  final void Function(List<String> choices, int elapsedTime) onSubmit;
 
   @override
   State<QuizQuestion> createState() => _QuizQuestionState();
@@ -27,7 +27,7 @@ class QuizQuestion extends StatefulWidget {
 
 class _QuizQuestionState extends State<QuizQuestion> {
   List<String> choices = [];
-    CountDownController neonController = CountDownController();
+  CountDownController neonController = CountDownController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +62,11 @@ class _QuizQuestionState extends State<QuizQuestion> {
               )),
           const SizedBox(height: 10),
           QuestionHeader(
+            index: widget.index,
             quizModel: widget.quizModel,
             neonController: neonController,
             questionModel: widget.question,
+            onComplete: () => widget.onSubmit([], widget.question.time + 1),
           ),
           const SizedBox(height: 20),
           Text(
@@ -98,8 +100,10 @@ class _QuizQuestionState extends State<QuizQuestion> {
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             QuizButton(
               label: "Start",
-              tapCallback: () =>
-                  widget.onSubmit(choices, neonController.getTimeInSeconds()),
+              tapCallback: () {
+                neonController.pause();
+                widget.onSubmit(choices, neonController.getTimeInSeconds());
+              },
             )
           ]),
         ],

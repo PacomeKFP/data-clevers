@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppGlobals {
   // static Widget logo() => Image.asset("icons/logo.png", );
-  static Widget logo() => Text("DC",
+  static Widget logo({double? fontSize, Color? lblColor, Color? bgColor}) => Text("DC",
       style: GoogleFonts.quicksand(
           fontSize: 42,
           fontWeight: FontWeight.w900,
-          color: AppColors.darkBlue,
-          backgroundColor: AppColors.white));
+          color: lblColor?? AppColors.darkBlue,
+          backgroundColor: bgColor ?? AppColors.white));
   static Widget appName({double? fontSize, Color? lblColor, Color? bgColor}) =>
       Text(
         "DataClevers",

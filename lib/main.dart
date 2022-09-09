@@ -54,7 +54,6 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             scrollBehavior: MyCustomScrollBehavior(),
             debugShowCheckedModeBanner: false,
-            initialRoute: '/',
             title: 'DataClevers',
             theme: ThemeData(
               brightness: (state as AppGlobalsInitial).theme,
@@ -63,7 +62,11 @@ class MyApp extends StatelessWidget {
               fontFamily: GoogleFonts.roboto().fontFamily,
               primarySwatch: Colors.blue,
             ),
-            home: Quiz(),
+            // home: OutHomePage(),
+            routes: {
+              '/': (context) =>  OutHomePage(),
+              '/home': (context) => const UserHome()
+            },
           );
         },
       ),

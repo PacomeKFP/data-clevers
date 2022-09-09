@@ -12,7 +12,7 @@ class AppGlobalsBloc extends Bloc<AppGlobalsEvent, AppGlobalsState> {
   AppGlobalsBloc()
       : super(AppGlobalsInitial(
             lang: AppLanguages.english,
-            theme: SchedulerBinding.instance.window.platformBrightness)) {
+            theme: Brightness.light)) {
     on<InitApp>((event, emit) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -41,7 +41,7 @@ class AppGlobalsBloc extends Bloc<AppGlobalsEvent, AppGlobalsState> {
         theme: (state as AppGlobalsInitial).theme, lang: event.newLang)));
 
     ///To change the AppTheme, we just have to emmit a new state with the new theme
-    on<SwitchTheme>((event, emit) => emit(AppGlobalsInitial(
+    on<SwitchAppTheme>((event, emit) => emit(AppGlobalsInitial(
         lang: (state as AppGlobalsInitial).lang, theme: event.newTheme)));
   }
   @override
